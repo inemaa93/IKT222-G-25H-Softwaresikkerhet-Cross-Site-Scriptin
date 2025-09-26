@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Posts · XSS Demo{% endblock %}
+{% block content %}
+<h1>Posts</h1>
+{% if not posts %}
+  <p class="muted">No posts yet.</p>
+{% endif %}
+{% for p in posts %}
+  <div class="card">
+    <h3><a href="{{ url_for('post_detail', post_id=p['id']) }}">{{ p['title'] }}</a></h3>
+    <p class="muted">{{ p['created_at'] }} · {{ p['comment_count'] }} comments</p>
+  </div>
+{% endfor %}
+{% endblock %}
