@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}New post · XSS Demo{% endblock %}
+{% block content %}
+<h1>New post</h1>
+<form method="post" action="{{ url_for('create_post') }}">
+  <div><label>Title</label><br /><input name="title" required /></div>
+  <div><label>Body</label><br /><textarea name="body" rows="6" required></textarea></div>
+  <button type="submit">Create</button>
+</form>
+{% endblock %}

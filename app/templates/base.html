@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}XSS Demo{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body { max-width: 720px; margin: 2rem auto; font: 16px/1.4 system-ui, sans-serif; }
+      header a { text-decoration: none; margin-right: 1rem; }
+      .card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+      form > div { margin: .5rem 0; }
+      .muted { color: #666; font-size: .9rem; }
+      .flash { color: #b00; margin: .5rem 0; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="{{ url_for('list_posts') }}">Posts</a>
+      <a href="{{ url_for('new_post') }}">New post</a>
+    </header>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for cat, msg in messages %}
+          <div class="flash">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </body>
+</html>

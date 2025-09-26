@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ post['title'] }} · XSS Demo{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>{{ post['title'] }}</h1>
+  <p>{{ post['body'] }}</p>
+  <p class="muted">{{ post['created_at'] }}</p>
+</div>
+
+<h2>Comments</h2>
+{% if not comments %}
+  <p class="muted">No comments yet.</p>
+{% endif %}
+{% for c in comments %}
+  <div class="card">
+    <strong>{{ c['author'] }}</strong>
+    <p>{{ c['content'] }}</p>
+    <p class="muted">{{ c['created_at'] }}</p>
+  </div>
+{% endfor %}
+
+<h3>Add a comment</h3>
+<form method="post" action="{{ url_for('create_comment', post_id=post['id']) }}">
+  <div><label>Name</label><br /><input name="author" placeholder="Anonymous" /></div>
+  <div><label>Comment</label><br /><textarea name="content" rows="4" required></textarea></div>
+  <button type="submit">Comment</button>
+</form>
+{% endblock %}
