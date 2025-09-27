@@ -4,20 +4,27 @@
     <meta charset="utf-8" />
     <title>{% block title %}XSS Demo{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      body { max-width: 720px; margin: 2rem auto; font: 16px/1.4 system-ui, sans-serif; }
-      header a { text-decoration: none; margin-right: 1rem; }
-      .card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
-      form > div { margin: .5rem 0; }
-      .muted { color: #666; font-size: .9rem; }
-      .flash { color: #b00; margin: .5rem 0; }
-    </style>
+
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
   </head>
   <body>
-    <header>
+    <!--<header>
       <a href="{{ url_for('list_posts') }}">Posts</a>
       <a href="{{ url_for('new_post') }}">New post</a>
-    </header>
+    </header> -->
+
+    <div class="page-header">
+      <h1 class = "main-title">XSS Demo Blog</h1>
+      <h1 class = "subtitle">Learning about security</h1>
+    </div>
+
+    <nav class="navbar">
+      <a href="{{ url_for('list_posts') }}">Posts</a>
+      <a href="{{ url_for('new_post') }}">New post</a>
+    </nav>
+
+
+
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
         {% for cat, msg in messages %}
@@ -25,6 +32,27 @@
         {% endfor %}
       {% endif %}
     {% endwith %}
-    {% block content %}{% endblock %}
+    
+    <main class="layout">
+      <section class="main-content">
+        {% block content %}
+        {% endblock %}
+      </section>
+
+    
+      <aside class="sidebar">
+        <div class="about-me">
+          <h2>About Me</h2>
+          <p>
+            Hi! I am a web developer learning about security vulnerabilities. I am learning about XSS attacks, Flask, and secure 
+            backend development. I'm glad you found my blog, and stick around to see my progress!
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 - XSS Demo Blog. All rights reserved. Production of UIA students.</p>
+
   </body>
 </html>
