@@ -33,22 +33,24 @@
       {% endif %}
     {% endwith %}
     
-    <main class="layout">
+    <main class="layout {% block layout_mod %}{% endblock %}">
       <section class="main-content">
         {% block content %}
         {% endblock %}
       </section>
 
-    
+      {% block sidebar %}
       <aside class="sidebar">
         <div class="about-me">
           <h2>About Me</h2>
+          <img id="about-photo" src="{{ url_for('static', filename='img/teamwork.png') }}" alt="Author photo"/>
           <p>
             Hi! I am a web developer learning about security vulnerabilities. I am learning about XSS attacks, Flask, and secure 
             backend development. I'm glad you found my blog, and stick around to see my progress!
           </p>
         </div>
       </aside>
+      {% endblock %}
     </main>
 
     <footer class="footer">

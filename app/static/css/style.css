@@ -1,73 +1,30 @@
 body {
-  font-family: "Segoe UI", system-ui, sans-serif;
-  background: #f7f7f7;
-  color: #333;
-  margin: 0;
-  padding: 0;
-}
-
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: #282c34;
-  color: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-.navbar .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.navbar nav a {
-  color: #fff;
-  text-decoration: none;
-  margin-left: 1.5rem;
-  font-weight: 500;
-}
-
-.navbar nav a:hover {
-  text-decoration: underline;
-}
-
-
-.content {
-  max-width: 960px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-.footer {
-  text-align: center;
-  padding: 1rem;
-  margin-top: 3rem;
-  background: #f1f1f1;
-  color: #777;
-  font-size: 0.9rem;
-}
-
-.page-header {
-  text-align: center;
-  margin: 3rem 0 2rem 0;
-}
-
-.page-header .main-title {
-  font-size: 3rem;
-  margin: 0;
-  color: #222;
-}
-
-.page-header .subtitle {
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin: 0.5rem;
-  color: #666;
-}
-
-.navbar {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: #f7f7f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .page-header {
+    text-align: center;
+    margin: 3rem 0 2rem 0;
+  }
+  
+  .page-header .main-title {
+    font-size: 3rem;
+    margin: 0;
+    color: #222;
+  }
+  
+  .page-header .subtitle {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 0.5rem;
+    color: #666;
+  }
+  
+  .navbar {
     display: flex;
     justify-content: center;
     gap: 2rem;
@@ -100,11 +57,17 @@ body {
     position: absolute;
     bottom: -6px;
     left: 0;
-    width: 500%;
+    width: 100%;
     height: 2px;
     background: #007BFF;
   }
-
+  
+  .content {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
   .layout {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -115,7 +78,6 @@ body {
   }
   
   .main-content {
-    /*add something here maybe?*/
   }
   
   .sidebar {
@@ -127,14 +89,26 @@ body {
     align-self: start;
   }
   
+  .about-me {
+    overflow: hidden;
+  }
+  
   .about-me h2 {
     margin-top: 0;
   }
   
   .about-me img {
-    width: 100%;
-    border-radius: 8px;
     margin-bottom: 1rem;
+  }
+  
+  .about-me .about-photo {
+    float: left;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 .9rem .6rem 0;
+    shape-outside: circle(50%);
   }
   
   @media (max-width: 800px) {
@@ -145,3 +119,77 @@ body {
       margin-top: 2rem;
     }
   }
+  
+  .layout.layout--single {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+  
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+  }
+  
+  button.btn-primary {
+    background: #007bff;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  button.btn-primary:hover {
+    background: #0056b3;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 1rem;
+    margin-top: 3rem;
+    background: #f1f1f1;
+    color: #777;
+    font-size: 0.9rem;
+  }
+  
+    #about-photo {
+    float: left;
+    width: 90px !important;
+    height: 90px !important;
+    border-radius: 50% !important;
+    object-fit: cover;
+    margin: 0 .9rem .6rem 0;
+    shape-outside: circle(50%);
+    }
+
+    .about-me { overflow: hidden; }

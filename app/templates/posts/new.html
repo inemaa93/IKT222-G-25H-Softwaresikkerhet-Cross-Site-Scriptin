@@ -1,10 +1,26 @@
 {% extends "base.html" %}
 {% block title %}New post · XSS Demo{% endblock %}
+
+<!-- Keep this section to avoid using my sections for base page... -->
+{% block layout_mod %}layout--single{% endblock %}
+{% block sidebar %}{% endblock %}
+
+
 {% block content %}
-<h1>New post</h1>
-<form method="post" action="{{ url_for('create_post') }}">
-  <div><label>Title</label><br /><input name="title" required /></div>
-  <div><label>Body</label><br /><textarea name="body" rows="6" required></textarea></div>
-  <button type="submit">Create</button>
-</form>
+  <div class="form-container">
+    <h1>Create a New Post</h1>
+    <form method="post" action="{{ url_for('create_post') }}">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input id="title" name="title" required />
+      </div>
+
+      <div class="form-group">
+        <label for="body">Body</label>
+        <textarea id="body" name="body" rows="6" required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+  </div>
 {% endblock %}
