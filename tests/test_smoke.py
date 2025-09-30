@@ -1,6 +1,7 @@
 from app import create_app
 from app.db import init_db
 
+
 def test_index_returns_ok(tmp_path):
     app = create_app()
     app.config.update(
